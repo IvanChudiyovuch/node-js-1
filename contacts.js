@@ -12,8 +12,11 @@ async function listContacts() {
 
 async function getContactById(id) {
   const db = await listContacts();
-  const contact = db.filter((item) => item.id === id);
-  return console.log(contact);
+  const contact = db.find((item) => item.id === id);
+  if (!contact) {
+    return null;
+  }
+  return contact;
 }
 
 async function removeContact(id) {
